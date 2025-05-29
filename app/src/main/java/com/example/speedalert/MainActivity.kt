@@ -109,7 +109,8 @@ class FirebaseAlertService : AlertService {
         )
 
         val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
-        val body = payload.toRequestBody(mediaType)
+        val body = org.json.JSONObject(payload).toString().toRequestBody(mediaType)
+
 
         val request = Request.Builder()
             .url(fcmUrl)
